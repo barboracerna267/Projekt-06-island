@@ -18,13 +18,32 @@ body {
 }
 
 p{
-    padding: 0 50px;
+    padding: 0 30px;
 }
 
 h2{
+    position: relative;
     padding-left: 50px;
-    padding-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 50px;
     color: black;
+}
+
+h2::after{
+    content:" ";
+    display: block;
+    width: 100px;
+    height: 5px;
+    background-color: rgb(146, 146, 234);
+    position: absolute;
+    left: 0;
+    top: 80px;
+}
+.last{
+    padding-bottom: 30px;
+}
+.first{
+    padding-top: 30px;
 }
 
 /* HLAVICKA */
@@ -42,18 +61,29 @@ header{
 }
 
 .perex{
+    position: relative;
     padding: 20px;
     padding-top: 0;
     margin: 0;
 }
 
+.perex::after{
+    content:" ";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+}
+
 .autor{
-    border-top: solid;
-    border-color: white;
-    padding-top: 10px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     margin: 0;
     font-style: italic;
+    text-align: center;
 }
 
 /* MENU */
@@ -65,6 +95,7 @@ header{
     padding-left: 0;
     padding: 20px 0;
     cursor: pointer;
+    font-size: small;
 }
 
 li{
@@ -97,9 +128,14 @@ img{
    width: 100%;
    height: auto;
    padding: 0;
-   padding-top: 30px;
+   
    margin: 0;
 }
+
+.galerie .popisek{
+    font-weight: bold;
+}
+
 
 /* PATICKA */
 
@@ -108,7 +144,7 @@ footer{
     background: linear-gradient(lightgrey, white);
     font-family: 'Times New Roman', Times, serif;
     color: rgb(142, 138, 138);
-    padding: 20px;
+    padding: 10px;
 }
 
 @media screen and (min-width: 501px){
@@ -120,29 +156,53 @@ footer{
     .menu{
         display:flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
     
     img{
         width: 100%;
         height: auto;
+        padding: 0;
+        padding-top: 20px;
+    }
+
+    .galerie img{
+        padding-top: 0;
+    }
+
+    .pravydolni{
         position: relative;
     }
 
     .popisek{
         position: absolute;
-        right: 200px;
+        right: 0;
+        bottom: 0;
+        color: white;
+        padding-right: 10px;
+    }
+
+    .popisek a{
+        color: white;
     }
 
     .galerie{
         display: flex;
         flex-direction: row;
-        flex-grow: 1;
         flex-wrap: wrap;
     }
 
     .foto{
-        flex: 1 1 50%;
+        flex: 0 1 50%;
+    }
+
+    .foto img{
+        width: 100%;
+        display: block;
+    }
+
+    .galerie .popisek{
+        display: none;
     }
 }
 
@@ -151,6 +211,10 @@ footer{
     body{
         width: 100%;
         background-color: rgb(244, 238, 238);
+    }
+
+    .first{
+        padding-top: 0;
     }
 
     header{
@@ -170,25 +234,40 @@ footer{
         padding: 0 300px;
         padding-bottom: 50px;
     }
+
+    .flexuvod{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    li{
+        padding: 3px;
+    }
+
+    .menu{
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        padding-left: 50px;
+        text-align: left;
+        font-size: small;
+    }
+
+    .uvod{
+        padding: 20px;
+    }
     
     .hlavnitext{
         display: flex;
         flex-grow: 1;
         align-items: flex-start;
         flex-direction: column;
-        margin: 50px;
         color: gray;
         background-color: white;
-        margin: 0 200px;
-        margin-top: -150px;
-    }
-
-    .menu{
-        display: flex;
-        flex-direction: column;
-        padding-left: 30px;
-        padding-top: 0;
-        text-align: left;
+        margin: 0 auto;
+        margin-top: -100px;
+        width: 960px;
     }
 
     .covidet{
@@ -212,12 +291,19 @@ footer{
         flex: 1 1 calc(100%/3);
     }
 
-    footer{
+    .foto img{
         width: 100%;
-        padding: 0;
+        display: block;
     }
 
-    
+    footer{
+        width: 100%;
+        background: rgb(244, 238, 238);
+    }
+
+    .paticka{
+        padding-left: 0;
+    }
 }
 
 
