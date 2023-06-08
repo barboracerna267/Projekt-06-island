@@ -47,6 +47,7 @@ h2::after{
 }
 
 /* HLAVICKA */
+
 header{
     background-image: url(images/hlavicka.jpg);
     background-size: cover;
@@ -62,8 +63,7 @@ header{
 
 .perex{
     position: relative;
-    padding: 20px;
-    padding-top: 0;
+    padding: 0 20px;
     margin: 0;
 }
 
@@ -73,13 +73,10 @@ header{
     width: 100px;
     height: 3px;
     background-color: white;
-    position: absolute;
-    right: 50%;
-    bottom: 0;
+    margin: 25px auto;
 }
 
 .autor{
-    padding-top: 30px;
     padding-bottom: 30px;
     margin: 0;
     font-style: italic;
@@ -89,6 +86,8 @@ header{
 /* MENU */
 
 .menu{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     list-style: none;
     color: grey;
@@ -100,6 +99,8 @@ header{
 
 li{
     border-bottom: solid;
+    border-width: 1px;
+    margin: 0 40px;
     color: gainsboro;
     padding: 10px;
     text-transform: uppercase;
@@ -114,7 +115,8 @@ a{
 
 /* OBSAH */
 
-.popisek{
+.popisek,
+.oznaceni{
     text-align: center;
     color: gray;
     margin-top: 0;
@@ -128,35 +130,47 @@ img{
    width: 100%;
    height: auto;
    padding: 0;
-   
    margin: 0;
 }
 
-.galerie .popisek{
+.oznaceni{
     font-weight: bold;
 }
 
+.galerie .popisek-copy{
+    font-weight: normal;
+}
 
 /* PATICKA */
 
 footer{
-    border-top:none;
+    border-top: none;
     background: linear-gradient(lightgrey, white);
     font-family: 'Times New Roman', Times, serif;
     color: rgb(142, 138, 138);
     padding: 10px;
 }
 
-@media screen and (min-width: 501px){
+@media (min-width: 550px){
    
     body{
         width: 100%;
     }
     
     .menu{
-        display:flex;
+        display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        padding: 0;
+        margin: 30px;
+    }
+
+    li{
+        border: solid;
+        border-width: 1px;
+        border-spacing: 0;
+        flex: 1 1 100%;
+        padding: 5px;
+        margin: 0;
     }
     
     img{
@@ -194,24 +208,21 @@ footer{
 
     .foto{
         flex: 0 1 50%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .oznaceni{
+        position: absolute;
     }
 
     .foto img{
         width: 100%;
         display: block;
     }
-
-    .galerie .popisek{
-        display: none;
-    }
 }
 
 @media screen and (min-width: 1000px){
-
-    body{
-        width: 100%;
-        background-color: rgb(244, 238, 238);
-    }
 
     .first{
         padding-top: 0;
@@ -232,7 +243,10 @@ footer{
 
     .perex{
         padding: 0 300px;
-        padding-bottom: 50px;
+    }
+
+    .autor{
+        padding-top: 0;
     }
 
     .flexuvod{
@@ -241,17 +255,21 @@ footer{
         align-items: flex-start;
     }
 
-    li{
-        padding: 3px;
-    }
-
     .menu{
         display: flex;
         flex-direction: column;
-        padding: 30px;
+        margin: 40px;
         padding-left: 50px;
         text-align: left;
         font-size: small;
+    }
+
+    li{
+        padding: 3px;
+        flex: 1 1 100%;
+        border: none;
+        border-bottom: solid;
+        border-width: 1px;
     }
 
     .uvod{
@@ -284,11 +302,12 @@ footer{
     .galerie{
         display: flex;
         flex-direction: row;
-        flex-grow: 3;
         flex-wrap: wrap;
     }
-    .foto{
+    .galerie .foto{
         flex: 1 1 calc(100%/3);
+        position: relative;
+        overflow: hidden;
     }
 
     .foto img{
@@ -296,15 +315,41 @@ footer{
         display: block;
     }
 
+    .oznaceni{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgb(90, 88, 88);
+        color: white;
+        width: 100%;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+
+    .popisek-copy a{
+        color: white;
+    }
+
+    .foto:hover .oznaceni{
+        transform: translateY(-100%);
+    }
+
+    .foto:hover img{
+        transform: scale(1.2);
+    }
+
     footer{
         width: 100%;
-        background: rgb(244, 238, 238);
+        background: none;
+        background-color: #f5f5f5;
     }
 
     .paticka{
         padding-left: 0;
+       
     }
 }
+
 
 
 
